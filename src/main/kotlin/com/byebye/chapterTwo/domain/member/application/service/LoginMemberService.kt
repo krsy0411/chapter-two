@@ -20,7 +20,7 @@ class LoginMemberService(
 ) : LoginMemberUseCase {
 
     override fun loginMember(memberDTO: LoginMemberRequest): BaseResponse<JwtInfo> {
-        val member: Member = loadMemberPort.loadMemberWithName(memberDTO.name)
+        val member: Member = loadMemberPort.loadMemberWithId(memberDTO.id)
 
         if (!bCryptPasswordEncoder.matches(memberDTO.password, member.password)) {
             throw CustomException(JwtErrorCode.JWT_MEMBER_NOT_MATCH)

@@ -9,7 +9,7 @@ class JwtUserDetails(
     val member: Member
 ) : UserDetails {
 
-    val id: Long? = member.id
+    val id: String = member.id
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
         val authorities: MutableCollection<GrantedAuthority> = ArrayList()

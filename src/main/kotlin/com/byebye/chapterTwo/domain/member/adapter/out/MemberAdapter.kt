@@ -1,10 +1,9 @@
 package com.byebye.chapterTwo.domain.member.adapter.out
 
-import com.byebye.chapterTwo.domain.member.adapter.out.repository.MemberRepository
 import com.byebye.chapterTwo.domain.member.adapter.out.mapper.MemberMapper
+import com.byebye.chapterTwo.domain.member.adapter.out.repository.MemberRepository
 import com.byebye.chapterTwo.domain.member.application.exception.MemberErrorCode
 import com.byebye.chapterTwo.domain.member.application.model.Member
-import com.byebye.chapterTwo.domain.member.application.port.out.DeleteMemberPort
 import com.byebye.chapterTwo.domain.member.application.port.out.ExistMemberPort
 import com.byebye.chapterTwo.domain.member.application.port.out.LoadMemberPort
 import com.byebye.chapterTwo.domain.member.application.port.out.SaveMemberPort
@@ -17,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional
 class MemberAdapter (
     val memberRepository: MemberRepository,
     val memberMapper: MemberMapper
-) : SaveMemberPort, LoadMemberPort, ExistMemberPort, DeleteMemberPort {
+) : SaveMemberPort, LoadMemberPort, ExistMemberPort {
 
     @Transactional
     override fun saveMember(member: Member) {
@@ -26,15 +25,8 @@ class MemberAdapter (
         )
     }
 
-    @Transactional
-    override fun deleteMember(member: Member) {
-        memberRepository.delete(
-            memberMapper.toEntity(member)
-        )
-    }
-
     @Transactional(readOnly= true)
-    override fun loadMemberWithId(id: Long): Member {
+    override fun loadMemberWithId(id: String): Member {
         return memberMapper.toDomain(
             memberRepository.findByIdOrNull(id)
                 ?: throw CustomException(MemberErrorCode.MEMBER_NOT_FOUND)

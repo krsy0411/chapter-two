@@ -4,7 +4,7 @@ import com.byebye.chapterTwo.domain.member.application.model.Member
 
 interface LoadMemberPort {
 
-    fun loadMemberWithId(id: Long): Member
+    fun loadMemberWithId(id: String): Member
 
     fun loadMemberWithName(name: String): Member
 

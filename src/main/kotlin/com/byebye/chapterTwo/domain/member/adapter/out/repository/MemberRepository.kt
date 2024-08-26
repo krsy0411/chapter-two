@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface MemberRepository: CrudRepository<MemberEntity, Long>, MemberRepositoryCustom {
+interface MemberRepository: CrudRepository<MemberEntity, String>, MemberRepositoryCustom {
 
     override fun findByName(name: String): MemberEntity?
 

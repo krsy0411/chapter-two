@@ -6,8 +6,7 @@ import jakarta.persistence.*
 data class MemberEntity (
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: String,
 
     @Column(nullable = false)
     var name: String = "",

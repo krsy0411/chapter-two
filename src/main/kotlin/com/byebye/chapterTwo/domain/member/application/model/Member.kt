@@ -5,7 +5,7 @@ import com.byebye.chapterTwo.domain.member.adapter.`in`.dto.req.RegisterMemberRe
 
 data class Member (
 
-    val id: Long?,
+    val id: String,
     var name: String,
     val password: String,
     val role: MemberRole,
@@ -14,7 +14,7 @@ data class Member (
 ) {
 
     constructor(dto: RegisterMemberRequest, encrypted: String) : this (
-        id = null?:0,
+        id = dto.id,
         name = dto.name,
         password = encrypted,
         role = MemberRole("ROLE_USER"),

@@ -10,7 +10,7 @@ class MemberMapper{
 
     fun toDomain(entity: MemberEntity): Member {
         return Member (
-            id = entity.id!!,
+            id = entity.id,
             name = entity.name,
             phoneNum = entity.phoneNum,
             password = entity.password,
@@ -20,7 +20,7 @@ class MemberMapper{
 
     fun toEntity(domain: Member): MemberEntity {
         return MemberEntity (
-            id = domain.id?: 0,
+            id = domain.id,
             name = domain.name,
             phoneNum = domain.phoneNum,
             password = domain.password,
